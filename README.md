@@ -16,3 +16,5 @@ by NavyZhang 710605420@qq.com
 
 3、可以根据项目需要，添加到项目内的command的系统，避免使用第三方插件。    
 有问题请反馈！  
+QQ群
+![Uploading qrcode_1708505722355.jpg…]()
