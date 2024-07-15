@@ -1,5 +1,7 @@
 by NavyZhang 710605420@qq.com  
-支持5.3以下版本，5.3 paper2d代码有做过调整，可能引入了一些问题。在进行烘焙的时候，5.3版本会陷入无限递归调用的bug。  
+支持所有版本！请自行修复UE5.3.2之后引入的paper2D  bug，否则会陷入无限递归调用的bug。  修复如下图
+![QQ_1721027944037](https://github.com/user-attachments/assets/5f06e880-22c4-40b4-9830-796dda3f13cf)
+
 ***无版权，放心使用***  
 ![UEAtlasLogo](https://github.com/hanbim520/UnrealAtlas/assets/7490792/0ca0b361-fbe8-4924-85fe-8e8634696c8f)  
 
