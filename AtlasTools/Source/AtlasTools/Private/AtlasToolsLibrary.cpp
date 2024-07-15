@@ -4,14 +4,14 @@
 #include "AtlasToolsLibrary.h"
 #include "../Plugins/2D/Paper2D/Source/Paper2D/Classes/PaperSpriteAtlas.h"
 #include "ImageUtils.h"
-#include "Blutility/Public/EditorUtilitySubsystem.h"
-#include "Blutility/Classes/EditorUtilityWidgetBlueprint.h"
+#include "Editor/Blutility/Public/EditorUtilitySubsystem.h"
+#include "Editor/Blutility/Classes/EditorUtilityWidgetBlueprint.h"
 #include "Editor/EditorEngine.h"
 #include "Editor.h"
 #include "Misc/FileHelper.h"
 
-#include <DesktopPlatform/Public/DesktopPlatformModule.h>
-#include <DesktopPlatform/Public/IDesktopPlatform.h>
+#include <Developer/DesktopPlatform/Public/DesktopPlatformModule.h>
+#include <Developer/DesktopPlatform/Public/IDesktopPlatform.h>
 
 // #include "Windows/AllowWindowsPlatformTypes.h"
 // #include "Windows/WindowsPlatformProcess.h"
@@ -137,7 +137,7 @@ bool UAtlasToolsLibrary::ExportImage(FString FolderName, UTexture2D* Texture2D, 
 	Texture2D->SRGB = false;
 	Texture2D->UpdateResource();
 
-	FTexture2DMipMap& mipmap = Texture2D->PlatformData->Mips[0];
+	FTexture2DMipMap& mipmap = Texture2D->GetPlatformData()->Mips[0];
 	uint8* Data = (uint8*)mipmap.BulkData.Lock(LOCK_READ_WRITE);
 	//FColor* FormatedImageData = static_cast<FColor*>(mipmap.BulkData.Lock(LOCK_READ_WRITE));
 	if (Data == nullptr)
@@ -147,8 +147,8 @@ bool UAtlasToolsLibrary::ExportImage(FString FolderName, UTexture2D* Texture2D, 
 		return false;
 	}
 
-	int width = Texture2D->PlatformData->SizeX;
-	int height = Texture2D->PlatformData->SizeY;
+	int width = Texture2D->GetPlatformData()->SizeX;
+	int height = Texture2D->GetPlatformData()->SizeY;
 	TArray<FColor> nColors;
 
 	for (int32 y = 0; y < height; y++)
@@ -1217,7 +1217,7 @@ float UAtlasToolsLibrary::CaculateAtlashUseageInternal(class UTexture2D* Texture
     Texture2D->UpdateResource();
 
 
-    FTexture2DMipMap& mipmap = Texture2D->PlatformData->Mips[0];
+    FTexture2DMipMap& mipmap = Texture2D->GetPlatformData()->Mips[0];
     uint8* Data = (uint8*)mipmap.BulkData.Lock(LOCK_READ_WRITE);
     if (Data == nullptr)
     {
@@ -1234,8 +1234,8 @@ float UAtlasToolsLibrary::CaculateAtlashUseageInternal(class UTexture2D* Texture
 //         Stride,
 //         false);
 
-    int width = Texture2D->PlatformData->SizeX;
-    int height = Texture2D->PlatformData->SizeY;
+    int width = Texture2D->GetPlatformData()->SizeX;
+    int height = Texture2D->GetPlatformData()->SizeY;
 
     int32 AlphaIs0Count = 0;
     for (int32 y = 0; y < height; y++)
